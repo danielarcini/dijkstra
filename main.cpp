@@ -169,18 +169,18 @@ int main(int argc, char *argv[])
         //find command
         if(0 == strcmp(word, "find"))
         {
-            v_scanf = scanf("%d%d", &source_new, &destination_new, &flag_new);
+            v_scanf = scanf("%d%d%d", &source_new, &destination_new, &flag_new);
             if(v_scanf !=3)
             {
                 continue;
             }
             else
             {
-                printf("Query: %s %d %d %d",
+                printf("Query: %s %d %d %d\n",
                        word, source_new, destination_new, flag_new);
                 if(source_new < 1 || source_new > n || flag_new < 0 || flag_new > 1)
                 {
-                    //printf("Error: invalid find query\n");
+                    printf("Error: invalid find query\n");
                 }
                 else
                 {
