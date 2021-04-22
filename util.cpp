@@ -38,6 +38,23 @@ int nextWord (char *word)
 
     //once it's inside of the word
     i = 0;
+    //reads the chars letter by letter until it reads the whole word
+    while(c != EOF)
+    {   //breaks the loop if there is a space, enter, tab
+        if (c == ' ' || c == '\t' || c == '\n')
+        {
+            break;
+        }
+        else if(!isalpha(c))
+        {
+            break;
+        }
+        r_value = 1;
+        word[i] = c;
+        i++;
+        c = getchar();
+    }
+    word[i] = '\0';
 
     return r_value;
 
@@ -45,6 +62,5 @@ int nextWord (char *word)
     //r_value is 1 for success
     //r_value is 0 for fail
 
-    
 }
 

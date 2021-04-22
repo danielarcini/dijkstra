@@ -1,7 +1,6 @@
 /** 
  * Author: Daniel Arciniega
- * Header file
- * all the methods and variables 
+ * Header the methods and variablesr file
 */
 
 

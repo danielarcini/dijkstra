@@ -1,6 +1,5 @@
 /**
  * Author:Daniel Arciniega
- * This program will hold the methods to
  * ./dijikstra <graph> <direction> this is how to run the program
  */
 
@@ -13,7 +12,7 @@ using namespace std;
 
 int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
 {
-     pNODE node;
+    pNODE node;
 
     pELEMENT element;
     int u, v, i;
@@ -138,7 +137,25 @@ void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
 
     arr[0] = t;
     int count = 1;
-    
+    while(V[v]->pi)
+    {
+        u = V[v]->pi;
+        pNODE = (PATH *) malloc(sizeof(PATH));
+
+        //save path
+        pNODE->vertex = u;
+        pNODE->next = pPath;
+
+        v = pNODE->vertex;
+
+        arr[count] = v;
+        count++;
+    }
+
+    int arr2[count];
+    for(int i = count-1; i>=0; i--){
+        arr2[i] = arr[i];
+    }
     if(V[t]->color == 0)
     {
         if(destination < 1 || destination > n || t == destination)
@@ -159,6 +176,11 @@ void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
     else if(V[t]->color == 2)
     {
         printf("Shortest path: <");
+        for(int i =count-1; i>=0 ; i--){
+            printf("%d",arr2[i]);
+            if(i > 0){
+                printf(", ");
+            }
         }
     }
 
@@ -177,6 +199,8 @@ void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
     printf(">\n");
     printf("The path weight is: %12.4f\n", V[t]->d);
 
+}//end printPath
 
-}
+
+
 

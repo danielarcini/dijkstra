@@ -1,10 +1,12 @@
 /** 
  * Author: Daniel Arciniega
+ * Function: This hold the heap class methods
+ * from Heap.h to be used in the main
 */
 
 
-#include "heap.h"
-#include "graph.h"
+#include "Heap.h"
+#include "Graph.h"
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
@@ -15,9 +17,12 @@ using namespace std;
 HEAP::HEAP(int n)
 {
     capacity = n;
-    size = 0;
+    size = 0; //correct I think
+    //size = 12;	//wrong I think
 
+    //element pointer array
     pVERTEX* arr = new pVERTEX[n + 1];  //dynamically allocated
+
     H = arr;
 
 
@@ -95,8 +100,10 @@ void HEAP::MovingUp (HEAP *heap, pVERTEX* V, int pos)
 
 }
 
-
-
+int hParent(int i)
+{
+    return i/2;
+}
 int hLeft(int i)
 {
     return 2*i;
@@ -108,8 +115,6 @@ int hRight(int i)
 
 void HEAP::minHeap(HEAP* heap, pVERTEX* V, int index)
 {
-    int smallest = index;
-
 
     int left = hLeft(index);
     int right = hRight(index);
@@ -136,4 +141,20 @@ void HEAP::minHeap(HEAP* heap, pVERTEX* V, int index)
     //}
 }
 
+pELEMENT HEAP::extractMin(HEAP* heap, pVERTEX* V)
+{
+    pELEMENT min, last;
+
+    if(heap->size <= 0)
+    {
+        return NULL;
+    }
+    min = heap->H[1];
+    last = heap->H[heap->size--];
+    heap->H[1] = last;
+    V[heap->H[1]->vertex]->pos = 1;
+    heap->minHeap(heap, V, min->vertex);
+    V[min->vertex]->pos = 0;
+    return min;
+}
 

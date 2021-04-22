@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <cstring>
-#include <string>
+#include <string> 
 #include <iostream>
 using namespace std;
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     pNODE *A;
     pNODE node;
     pVERTEX *V;
-
+        
     //for nextWord
     char word[256];
     char word2[256];
@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
     }
 
     /* ifile Reading */
-    //opens network file to be read
+    //opens network file to be read 
     ifile = fopen(argv[1], "r");
     if(ifile == NULL)
     {
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
             printf("Error: fscanf returns %d.\n", v_fscanf);
             exit(1);
         }
-
+    
         //creates a pointerNode using size of NODE
         node = (pNODE) malloc(sizeof(NODE));
         if(!node)
@@ -99,14 +99,14 @@ int main(int argc, char *argv[])
         node->w = w;
         node->next = A[u];
 
-        //adjacency list does not need to be freed
-        //adds the [m] node to the
+        //adjacency list does not need to be freed 
+        //adds the [m] node to the 
         A[u] = node;
 
         //for undirected graphs
         if(!directed_graph)
         {
-            //BGN: undirected
+            //BGN: undirected 
             node = (pNODE) malloc(sizeof(NODE));
             if(!node)
             {
@@ -146,14 +146,14 @@ int main(int argc, char *argv[])
         }
         V[i]->vertex = i;
     }
-
+    
     while(1)
-    {
-        //first read in command
+    {   
+        //first read in command 
         r_value = nextWord(word);
 
         //if there is no read value
-        if(!r_value)
+        if(!r_value) 
         {
             printf("ErrorGLX: EOF\n");
             continue;
@@ -176,8 +176,8 @@ int main(int argc, char *argv[])
             }
             else
             {
-                printf("Query: %s %d %d %d\n",
-                       word, source_new, destination_new, flag_new);
+                printf("Query: %s %d %d %d\n", 
+                    word, source_new, destination_new, flag_new);
                 if(source_new < 1 || source_new > n || flag_new < 0 || flag_new > 1)
                 {
                     printf("Error: invalid find query\n");
@@ -201,7 +201,7 @@ int main(int argc, char *argv[])
             if(!r_value)
             {
                 printf("ErrorGLX4: EOF\n");
-                continue;
+                continue; 
             }
             if(0 == strcmp(word2, "path"))
             {
@@ -214,7 +214,7 @@ int main(int argc, char *argv[])
                 else
                 {
                     printf("Query: %s %s %d %d\n", word, word2, s_new, t_new);
-
+                    
                     if(source == 0 || !A)
                     {
                         printf("Error: no path computation done\n");
@@ -240,7 +240,7 @@ int main(int argc, char *argv[])
             continue;
         }
     }//end of query loop
-
+    
 
 
 }

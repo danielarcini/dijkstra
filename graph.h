@@ -15,7 +15,7 @@ public:
 
     float key; //holds the distance from the source vertex
 
-    int vertex; 
+    int vertex;
 
 };
 
@@ -43,6 +43,7 @@ public:
     PATH *next;
 };
 
+//methods
 int dijkstra(int n, pNODE *A, pVERTEX* V, int source, int destination, int f);
 void printPath(int n, int source, pVERTEX* V, int destination, int s, int t);
 
