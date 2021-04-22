@@ -169,18 +169,18 @@ int main(int argc, char *argv[])
         //find command
         if(0 == strcmp(word, "find"))
         {
-            v_scanf = scanf("%d%d%d", &source_new, &destination_new, &flag_new);
+            v_scanf = scanf("%d%d", &source_new, &destination_new, &flag_new);
             if(v_scanf !=3)
             {
                 continue;
             }
             else
             {
-                printf("Query: %s %d %d %d\n",
+                printf("Query: %s %d %d %d",
                        word, source_new, destination_new, flag_new);
                 if(source_new < 1 || source_new > n || flag_new < 0 || flag_new > 1)
                 {
-                    printf("Error: invalid find query\n");
+                    //printf("Error: invalid find query\n");
                 }
                 else
                 {
@@ -194,6 +194,44 @@ int main(int argc, char *argv[])
             }
 
         }//end find
+
+        else if(0 == strcmp(word, "write"))
+        {
+            r_value = nextWord(word2);
+            if(!r_value)
+            {
+                printf("ErrorGLX4: EOF\n");
+                continue;
+            }
+            if(0 == strcmp(word2, "path"))
+            {
+                v_scanf = scanf("%d%d", &s_new, &t_new);
+                if(v_scanf !=2)
+                {
+                    printf("ErrorcwGLX5: wrong return value for scanf\n");
+                    continue;
+                }
+                else
+                {
+                    printf("Query: %s %s %d %d\n", word, word2, s_new, t_new);
+
+                    if(source == 0 || !A)
+                    {
+                        printf("Error: no path computation done\n");
+                    }
+
+                    else if(s_new != source || t_new == s_new || t_new < 1 || t_new > n)
+                    {
+                        printf("Error: invalid source destination pair\n");
+                    }
+
+                    else
+                    {
+                        s = s_new; t = t_new;
+                        printPath(n, source, V, destination, s, t);
+                    }
+
+                }
             }
         }//end of write
         else
