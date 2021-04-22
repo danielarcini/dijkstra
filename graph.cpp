@@ -120,6 +120,7 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
     }//end while(!HEAP)
     return 1;
 }
+
 void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
 {
     int u, v;
