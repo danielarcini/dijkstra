@@ -5,8 +5,8 @@
 */
 
 
-#include "Heap.h"
-#include "Graph.h"
+#include "heap.h"
+#include "graph.h"
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
@@ -115,7 +115,7 @@ int hRight(int i)
 
 void HEAP::minHeap(HEAP* heap, pVERTEX* V, int index)
 {
-
+    int smallest;
     int left = hLeft(index);
     int right = hRight(index);
 
