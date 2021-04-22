@@ -48,7 +48,7 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
         printf("Insert vertex %d, key=%12.4f\n", element->vertex, element->key);
     }
     
-    while(heap->size != 0)
+       while(heap->size != 0)
     {
         element = heap->extractMin(heap, V);
 
@@ -69,6 +69,7 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
         free(element);
 
         node = A[u];
+
         while(node != NULL)
         {
             v = node->v;
@@ -81,11 +82,11 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
                 V[v]->d = V[u]->d + w;
 
 
-                V[v]->pos = heap->size + 1;
-
                 element = (ELEMENT*) malloc(sizeof(ELEMENT));
                 element->vertex = v;
                 element->key = V[v]->d;
+
+                heap->insert(heap, V, element);
 
                 if(f == 1)
                 {
@@ -98,13 +99,15 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
             {
                 if(f == 1)
                 {
-		    heap->xueDecreaseKey(heap, V, V[v]->pos, V[v]->d);
+
                     printf("Decrease key of vertex %d, from %12.4f to %12.4f\n", v, V[v]->d, V[u]->d+w);
                 }
 
                 oldKey = V[v]->d;
                 V[v]->d = V[u]->d + w;
                 V[v]->pi = u;
+
+                heap->xueDecreaseKey(heap, V, V[v]->pos, V[v]->d);
             }//end else if
 
             node = node -> next;
