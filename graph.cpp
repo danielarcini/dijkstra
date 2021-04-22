@@ -13,7 +13,7 @@ using namespace std;
 
 int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
 {
-    pNODE node;
+     pNODE node;
 
     pELEMENT element;
     int u, v, i;
@@ -30,8 +30,6 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
 
     }
 
-
-   
 
     V[source]->color = 1;   //grey color
     V[source]->d = 0;    //distance to itself
@@ -50,9 +48,10 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
         printf("Insert vertex %d, key=%12.4f\n", element->vertex, element->key);
     }
 
+    //cout << "D_Testing6" << endl;
     while(heap->size != 0)
     {
-        //element = heap->extractMin(heap, V); might be bugged
+        element = heap->extractMin(heap, V);
 
         if(f == 1)
         {
@@ -85,8 +84,8 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
 
 
                 V[v]->pos = heap->size + 1;
-		
-		element = new ELEMENT[1];
+
+                element = (ELEMENT*) malloc(sizeof(ELEMENT));
                 element->vertex = v;
                 element->key = V[v]->d;
 
