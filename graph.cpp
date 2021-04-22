@@ -151,6 +151,28 @@ void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
         arr[count] = v;
         count++;
     }
+    
+    int arr2[count];
+    for(int i = count-1; i>=0; i--){
+        arr2[i] = arr[i];
+    }
+    if(V[t]->color == 0)
+    {
+        if(destination < 1 || destination > n || t == destination)
+        {
+            printf("No %d-%d path exists.\n", s,t);
+            return;
+        }
+        else
+        {
+            printf("No %d-%d path has been computed.\n", s, t);
+            return;
+        }
+    }
+    else if(V[t]->color == 1)
+    {
+        printf("Path not known to be shortest: <%d, %d", s,t);
+    }
 
 }
 
