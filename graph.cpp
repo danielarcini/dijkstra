@@ -128,16 +128,29 @@ void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
     PATH *pPath;
     PATH *pNODE;
 
+    //using a stack to and pushing its values
+    pNODE = (PATH *) malloc(sizeof(PATH));
+    pNODE->vertex = t;
+    pNODE->next = NULL;
+    pPath = pNODE;
+    v = pNODE->vertex;
 
     arr[0] = t;
     int count = 1;
-}//end printPath
+    while(V[v]->pi)
+    {
+        u = V[v]->pi;
+        pNODE = (PATH *) malloc(sizeof(PATH));
 
+        //save path
+        pNODE->vertex = u;
+        pNODE->next = pPath;
 
+        v = pNODE->vertex;
 
-/**
-For "Write Path" in main
-Write path scans for &s_new(new source node) and &t_new(new destination node)
-*/
+        arr[count] = v;
+        count++;
+    }
 
+}
 
