@@ -138,23 +138,8 @@ void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
 
     arr[0] = t;
     int count = 1;
-    while(V[v]->pi)
-    {
-        u = V[v]->pi;
-        pNODE = (PATH *) malloc(sizeof(PATH));
-
-        //save path
-        pNODE->vertex = u;
-        pNODE->next = pPath;
-
-        v = pNODE->vertex;
-
-        arr[count] = v;
-        count++;
-    }
     
-    int arr2[count];
-  if(V[t]->color == 0)
+    if(V[t]->color == 0)
     {
         if(destination < 1 || destination > n || t == destination)
         {
@@ -173,21 +158,22 @@ void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
     }
     else if(V[t]->color == 2)
     {
-       
+        printf("Shortest path: <");
+        }
     }
-    
+
 
     pNODE = pPath;
     pPath = pPath->next;
     free(pNODE);
-	cout << "test" <<endl;
-    while (pNODE)
+
+    while (pPath)
     {
         pNODE = pPath;
         printf(" , %d", pNODE->vertex);
-        pNODE = pNODE->next;
+        pPath = pPath->next;
+        free(pNODE);
     }
-    cout << "test2" << endl;
     printf(">\n");
     printf("The path weight is: %12.4f\n", V[t]->d);
 
