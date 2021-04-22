@@ -47,8 +47,7 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
     {
         printf("Insert vertex %d, key=%12.4f\n", element->vertex, element->key);
     }
-
-    //cout << "D_Testing6" << endl;
+    
     while(heap->size != 0)
     {
         element = heap->extractMin(heap, V);
@@ -85,7 +84,7 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
 
                 V[v]->pos = heap->size + 1;
 
-                element = (ELEMENT*) malloc(sizeof(ELEMENT));
+                element = = new ELEMENT[1];
                 element->vertex = v;
                 element->key = V[v]->d;
 
@@ -104,6 +103,7 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
                 {
 
                     printf("Decrease key of vertex %d, from %12.4f to %12.4f\n", v, V[v]->d, V[u]->d+w);
+                    free[element];
                 }
 
                 oldKey = V[v]->d;
@@ -119,7 +119,19 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
     }//end while(!HEAP)
     return 1;
 }
+void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
+{
+    int u, v;
+    int arr[n+1];
 
+    //initalize variables
+    PATH *pPath;
+    PATH *pNODE;
+
+
+    arr[0] = t;
+    int count = 1;
+}//end printPath
 
 
 
