@@ -15,7 +15,7 @@ public:
 
     float key; //holds the distance from the source vertex
 
-    int vertex; //not sure what this is for
+    int vertex; 
 
 };
 
