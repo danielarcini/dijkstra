@@ -31,6 +31,8 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
     }
 
 
+   
+
     V[source]->color = 1;   //grey color
     V[source]->d = 0;    //distance to itself
 
@@ -47,10 +49,10 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
     {
         printf("Insert vertex %d, key=%12.4f\n", element->vertex, element->key);
     }
-    
-       while(heap->size != 0)
+
+    while(heap->size != 0)
     {
-        element = heap->extractMin(heap, V);
+        //element = heap->extractMin(heap, V); might be bugged
 
         if(f == 1)
         {
@@ -82,7 +84,9 @@ int dijkstra(int n, pNODE* A, pVERTEX* V, int source, int destination, int f)
                 V[v]->d = V[u]->d + w;
 
 
-                element = (ELEMENT*) malloc(sizeof(ELEMENT));
+                V[v]->pos = heap->size + 1;
+		
+		element = new ELEMENT[1];
                 element->vertex = v;
                 element->key = V[v]->d;
 
