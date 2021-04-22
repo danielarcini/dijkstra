@@ -173,6 +173,23 @@ void printPath(int n, int source, pVERTEX* V, int destination, int s, int t)
     {
         printf("Path not known to be shortest: <%d, %d", s,t);
     }
+    
+    
+
+    pNODE = pPath;
+    pPath = pPath->next;
+    free(pNODE);
+	cout << "test" <<endl;
+    while (pNODE)
+    {
+        pNODE = pPath;
+        printf(" , %d", pNODE->vertex);
+        pNODE = pNODE->next;
+    }
+    cout << "test2" << endl;
+    printf(">\n");
+    printf("The path weight is: %12.4f\n", V[t]->d);
+
 
 }
 
